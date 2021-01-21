@@ -1,0 +1,44 @@
+@media only screen and (max-width: 600px) {
+  .book-card {
+    width: 95%;
+    margin: calc(5% / 2);
+  }
+}
+
+body {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+}
+
+#book-container {
+  display: flex;
+  flex-direction: row;
+  width: 80vw;
+  max-width: 990px;
+  flex-wrap: wrap;
+}
+
+#title {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+}
+
+.book-card {
+  display: flex;
+  flex-direction: column;
+  border: 1px solid black;
+  width: 30%;
+  margin: calc(9% / 6);
+  justify-content: center;
+  align-items: center;
+}
+
+.read-button {
+  justify-self: center;
+  width: 80%;
+  margin: 16px;
+}
