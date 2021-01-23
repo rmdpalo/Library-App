@@ -18,6 +18,8 @@ body {
   width: 80vw;
   max-width: 990px;
   flex-wrap: wrap;
+  justify-content: center;
+  align-items: center;
 }
 
 #title {
@@ -32,13 +34,15 @@ body {
   flex-direction: column;
   border: 1px solid black;
   width: 30%;
+  min-width: 230px;
   margin: calc(9% / 6);
   justify-content: center;
   align-items: center;
 }
 
-.read-button {
+.card-button {
   justify-self: center;
   width: 80%;
-  margin: 16px;
+  margin: 0px;
+  margin-bottom: 16px;
 }

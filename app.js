@@ -2,6 +2,8 @@
 let myLibrary = [];
 //book container
 const container = document.querySelector('#book-container');
+//book id counter
+let idNum = 0;
 
 //Book class (constructor)
 function Book(title, author, pages, hasRead){
@@ -9,6 +11,8 @@ function Book(title, author, pages, hasRead){
     this.author = author;
     this.pages = pages;
     this.hasRead = hasRead;
+    this.idNum = idNum;
+    idNum++;
 
     this.info = function(){
         if(hasRead === "yes"){
@@ -44,10 +48,13 @@ function removeAllChildNodes(parent){
 }
 
 function generateCards(){
+    idNum = 0;
     myLibrary.forEach(book => {
         //create card
         const card = document.createElement('div');
         card.classList.add('book-card');
+        book.idNum = idNum;
+        idNum++;
         //create title
         const bookTitle = document.createElement('h4');
         bookTitle.textContent = book.title;
@@ -59,17 +66,28 @@ function generateCards(){
         bookPages.textContent = book.pages;
         //create read
         const bookRead = document.createElement('button');
-        bookRead.classList.add('read-button');
+        bookRead.classList.add('card-button');
         if(book.hasRead === "yes"){
             bookRead.textContent = "Read";
         } else {
             bookRead.textContent = "Not read";
         }
+        //create delete button
+        const deleteButton = document.createElement('button');
+        deleteButton.classList.add('card-button');
+        deleteButton.classList.add('delete-button')
+        deleteButton.textContent = "Remove";
+        deleteButton.addEventListener('click', (e) => {
+            myLibrary.splice(book.idNum, 1)
+            removeAllChildNodes(container);
+            generateCards();
+        });
         //append all to card
         card.appendChild(bookTitle);
         card.appendChild(bookAuthor);
         card.appendChild(bookPages);
         card.appendChild(bookRead);
+        card.appendChild(deleteButton);
         //append card to container
         container.appendChild(card);
     });
