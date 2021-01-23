@@ -63,7 +63,7 @@ function generateCards(){
         bookAuthor.textContent = book.author;
         //create pages
         const bookPages = document.createElement('p');
-        bookPages.textContent = book.pages;
+        bookPages.textContent = book.pages + " pages";
         //create read
         const bookRead = document.createElement('button');
         bookRead.classList.add('card-button');
@@ -72,6 +72,11 @@ function generateCards(){
         } else {
             bookRead.textContent = "Not read";
         }
+        bookRead.addEventListener('click', (e) => {
+            book.hasRead === "yes" ? book.hasRead = "no" : book.hasRead = "yes"; 
+            removeAllChildNodes(container);
+            generateCards();
+        })
         //create delete button
         const deleteButton = document.createElement('button');
         deleteButton.classList.add('card-button');

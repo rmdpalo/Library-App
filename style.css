@@ -10,6 +10,7 @@ body {
   flex-direction: column;
   justify-content: center;
   align-items: center;
+  font-family: Arial, Helvetica, sans-serif;
 }
 
 #book-container {
@@ -29,10 +30,14 @@ body {
   align-items: center;
 }
 
+#form-field {
+}
+
 .book-card {
   display: flex;
   flex-direction: column;
-  border: 1px solid black;
+  border: 2px solid black;
+  border-radius: 15px;
   width: 30%;
   min-width: 230px;
   margin: calc(9% / 6);
