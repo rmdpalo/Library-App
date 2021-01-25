@@ -30,7 +30,20 @@ body {
   align-items: center;
 }
 
-#form-field {
+form {
+  width: 80vw;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+}
+
+form div {
+  margin: 5px;
+}
+
+form button {
+  width: 100px;
 }
 
 .book-card {

@@ -4,6 +4,8 @@ let myLibrary = [];
 const container = document.querySelector('#book-container');
 //book id counter
 let idNum = 0;
+//form
+const bookForm = document.getElementById('book-form');
 
 //Book class (constructor)
 function Book(title, author, pages, hasRead){
@@ -26,18 +28,36 @@ function Book(title, author, pages, hasRead){
 
 //add event listener to add book button
 const addBookButton = document.querySelector('#add-book')
-addBookButton.addEventListener('click', addBookToLibrary);
+addBookButton.addEventListener('click', submitBook);
 
 //adding book to library
 function addBookToLibrary(){
-    let title = prompt("Book title");
-    let author = prompt("Book author");
-    let pages = prompt("Pages");
-    let hasRead = prompt("Have you read it?");
+    let title = document.getElementById('book-title').value;
+    let author = document.getElementById('author').value;
+    let pages = document.getElementById('pages').value;
+    let hasRead = getStatus();
     let newBook = new Book(title, author, pages, hasRead);
     myLibrary.push(newBook);
     removeAllChildNodes(container);
     generateCards();
+}
+
+function getStatus(){
+    //selects our radio options by name
+    let options = document.getElementsByName('status');
+
+    //loop through our options and check if that option is checked
+    for(let i = 0; i < options.length; i++){
+        //if it is checked we return its value
+        if(options[i].checked){
+            return options[i].value;
+        }
+    }
+}
+
+function submitBook(){
+    addBookToLibrary();
+    bookForm.reset();
 }
 
 function removeAllChildNodes(parent){
