@@ -1,5 +1,5 @@
 //library array
-let myLibrary = [];
+let myLibrary = !localStorage["myLibrary"] ? [] : JSON.parse(localStorage["myLibrary"]);
 //book container
 const container = document.querySelector('#book-container');
 //book id counter
@@ -38,6 +38,7 @@ function addBookToLibrary(){
     let hasRead = getStatus();
     let newBook = new Book(title, author, pages, hasRead);
     myLibrary.push(newBook);
+    localStorage["myLibrary"] = JSON.stringify(myLibrary);
     removeAllChildNodes(container);
     generateCards();
 }
@@ -104,6 +105,7 @@ function generateCards(){
         deleteButton.textContent = "Remove";
         deleteButton.addEventListener('click', (e) => {
             myLibrary.splice(book.idNum, 1)
+            localStorage["myLibrary"] = JSON.stringify(myLibrary);
             removeAllChildNodes(container);
             generateCards();
         });
